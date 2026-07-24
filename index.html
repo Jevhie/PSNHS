@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Registration | Pulung Santol NHS</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+
+        <div class="form-wrapper">
+          <div class="text-center mb-4">
+            <h1 class="display-6 fw-bold">Pulung Santol National High School</h1>
+            <p class="lead text-dark">Student Registration Form</p>
+            <hr />
+          </div>
+
+          <div id="successAlert" class="alert alert-success d-none" role="alert">
+            <strong>Registration successful!</strong> Student record has been saved.
+          </div>
+
+          <form id="studentForm" novalidate>
+            ->
+            <h5 class="border-bottom pb-2 mb-3">Personal Information</h5>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="firstName" class="form-label">First Name *</label>
+                <input type="text" class="form-control" id="firstName" required />
+                <div class="invalid-feedback">First name is required.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="lastName" class="form-label">Last Name *</label>
+                <input type="text" class="form-control" id="lastName" required />
+                <div class="invalid-feedback">Last name is required.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="birthdate" class="form-label">Date of Birth *</label>
+                <input type="date" class="form-control" id="birthdate" required />
+                <div class="invalid-feedback">Please select your birthdate.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label d-block">Gender *</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="genderMale" value="Male" required />
+                  <label class="form-check-label" for="genderMale">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female" />
+                  <label class="form-check-label" for="genderFemale">Female</label>
+                </div>
+                <div class="invalid-feedback" id="genderFeedback">Please select your gender.</div>
+              </div>
+              <div class="col-12">
+                <label for="address" class="form-label">Address *</label>
+                <input type="text" class="form-control" id="address" placeholder="Street, Barangay, City" required />
+                <div class="invalid-feedback">Address is required.</div>
+              </div>
+            </div>
+
+            <h5 class="border-bottom pb-2 mt-4 mb-3">Academic Information</h5>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="gradeLevel" class="form-label">Grade Level *</label>
+                <select class="form-select" id="gradeLevel" required>
+                  <option value="">Select Grade</option>
+                  <option value="7">Grade 7</option>
+                  <option value="8">Grade 8</option>
+                  <option value="9">Grade 9</option>
+                  <option value="10">Grade 10</option>
+                  <option value="11">Grade 11</option>
+                  <option value="12">Grade 12</option>
+                </select>
+                <div class="invalid-feedback">Please select a grade level.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="lrn" class="form-label">LRN (Learner Reference Number)</label>
+                <input type="text" class="form-control" id="lrn" placeholder="12-digit number" maxlength="12" />
+                <div class="invalid-feedback">LRN must be exactly 12 digits.</div>
+              </div>
+            </div>
+
+            <div id="strandSection" class="mt-3" style="display: none;">
+              <h5 class="border-bottom pb-2 mb-3">Senior High School Strand</h5>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="strand" class="form-label">Strand *</label>
+                  <select class="form-select" id="strand">
+                    <option value="">Select Strand</option>
+                    <option value="Humanities and Social Sciences (HUMSS)">Humanities and Social Sciences (HUMSS)
+                    </option>
+                    <option value="Information and Communications Technology(ICT)">Information and Communications
+                      Technology (ICT)</option>
+                    <option value="Electrical Installation and Maintenance(EIM)">Electrical Installation and Maintenance
+                      (EIM)</option>
+                    <option value="Science, Technology, Engineering and Mathematics(STEM)">Science, Technology,
+                      Engineering and Mathematics(STEM)</option>
+                  </select>
+                  <div class="invalid-feedback" id="strandFeedback">Please select a strand.</div>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="border-bottom pb-2 mt-4 mb-3">Guardian Information</h5>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="guardianName" class="form-label">Guardian's Full Name *</label>
+                <input type="text" class="form-control" id="guardianName" required />
+                <div class="invalid-feedback">Guardian's name is required.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="guardianContact" class="form-label">Guardian Contact No. *</label>
+                <input type="tel" class="form-control" id="guardianContact" required />
+                <div class="invalid-feedback">Guardian contact is required.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="relationship" class="form-label">Relationship *</label>
+                <select class="form-select" id="relationship" required>
+                  <option value="">Select Relationship</option>
+                  <option value="Father">Father</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Guardian">Guardian</option>
+                </select>
+                <div class="invalid-feedback">Please select the relationship.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="guardianEmail" class="form-label">Guardian Email</label>
+                <input type="email" class="form-control" id="guardianEmail" placeholder="optional" />
+              </div>
+            </div>
+
+            <div class="form-check mt-4">
+              <input class="form-check-input" type="checkbox" id="agree" required />
+              <label class="form-check-label" for="agree">
+                I certify that all information provided is true and correct. *
+              </label>
+              <div class="invalid-feedback" id="agreeFeedback">You must agree to continue.</div>
+            </div>
+
+            <div class="d-flex gap-3 mt-4">
+              <button type="submit" class="btn btn-primary" id="submitBtn">
+                Register Student
+              </button>
+              <button type="reset" class="btn btn-secondary">Clear All</button>
+            </div>
+
+          </form>
+
+          <div id="resultCard" class="card mt-5 d-none">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0"><i class="bi bi-person-check"></i> Registered Student Details</h5>
+            </div>
+            <div class="card-body" id="resultContent"></div>
+            <div class="card-footer text-end">
+              <button class="btn btn-outline-secondary btn-sm" id="resetAfterResult">Register Another</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery-4.0.0.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      $('#gradeLevel').on('change', function () {
+        const grade = $(this).val();
+        if (grade === '11' || grade === '12') {
+          $('#strandSection').slideDown(300);
+          $('#strand').prop('required', true);
+        } else {
+          $('#strandSection').slideUp(300);
+          $('#strand').prop('required', false);
+          $('#strand').removeClass('is-invalid is-valid');
+          $('#strandFeedback').hide();
+        }
+      });
+
+      if ($('#gradeLevel').val() === '11' || $('#gradeLevel').val() === '12') {
+        $('#strandSection').show();
+        $('#strand').prop('required', true);
+      }
+
+      function setValidation($field, isValid) {
+        if (isValid) {
+          $field.removeClass('is-invalid').addClass('is-valid');
+        } else {
+          $field.removeClass('is-valid').addClass('is-invalid');
+        }
+      }
+
+      // Real-time blur validation for required fields
+      $('#firstName, #lastName, #birthdate, #address, #gradeLevel, #guardianName, #guardianContact, #relationship')
+        .on('blur', function () {
+          const $this = $(this);
+          const val = $this.val().trim();
+          const isValid = (val !== '' && val !== 'Select Grade' && val !== 'Select Relationship');
+          setValidation($this, isValid);
+        });
+
+      // Strand validation on change
+      $('#strand').on('change', function () {
+        const val = $(this).val();
+        const isValid = (val !== '');
+        setValidation($(this), isValid);
+        if (isValid) {
+          $('#strandFeedback').hide();
+        } else {
+          $('#strandFeedback').show();
+        }
+      });
+
+      $('input[name="gender"]').on('change', function () {
+        if ($('input[name="gender"]:checked').length > 0) {
+          $('input[name="gender"]').removeClass('is-invalid');
+          $('#genderFeedback').hide();
+        }
+      });
+
+
+      $('#lrn').on('blur', function () {
+        const $this = $(this);
+        const val = $this.val().trim();
+        if (val === '') {
+          $this.removeClass('is-invalid is-valid');
+          return;
+        }
+        const isValid = /^\d{12}$/.test(val);
+        setValidation($this, isValid);
+        if (!isValid) {
+          if ($this.next('.invalid-feedback').length === 0) {
+            $this.after('<div class="invalid-feedback">LRN must be exactly 12 digits.</div>');
+          }
+        } else {
+          $this.next('.invalid-feedback').remove();
+        }
+      });
+
+      $('#agree').on('change', function () {
+        if ($(this).prop('checked')) {
+          $(this).removeClass('is-invalid');
+          $('#agreeFeedback').hide();
+        } else {
+          $(this).addClass('is-invalid');
+          $('#agreeFeedback').show();
+        }
+      });
+
+      $('#studentForm').on('submit', function (e) {
+        e.preventDefault();
+
+        let isValid = true;
+
+        const requiredFields = [
+          '#firstName', '#lastName', '#birthdate', '#address',
+          '#gradeLevel', '#guardianName', '#guardianContact', '#relationship'
+        ];
+
+        requiredFields.forEach(function (selector) {
+          const $field = $(selector);
+          const val = $field.val().trim();
+          const valid = (val !== '' && val !== 'Select Grade' && val !== 'Select Relationship');
+          setValidation($field, valid);
+          if (!valid) isValid = false;
+        });
+
+        const genderChecked = $('input[name="gender"]:checked').length > 0;
+        if (!genderChecked) {
+          $('input[name="gender"]').addClass('is-invalid');
+          $('#genderFeedback').show();
+          isValid = false;
+        } else {
+          $('input[name="gender"]').removeClass('is-invalid');
+          $('#genderFeedback').hide();
+        }
+
+        const $lrn = $('#lrn');
+        const lrnVal = $lrn.val().trim();
+        if (lrnVal !== '') {
+          const lrnValid = /^\d{12}$/.test(lrnVal);
+          setValidation($lrn, lrnValid);
+          if (!lrnValid) {
+            isValid = false;
+            if ($lrn.next('.invalid-feedback').length === 0) {
+              $lrn.after('<div class="invalid-feedback">LRN must be exactly 12 digits.</div>');
+            }
+          } else {
+            $lrn.next('.invalid-feedback').remove();
+          }
+        }
+
+
+        const grade = $('#gradeLevel').val();
+        if (grade === '11' || grade === '12') {
+          const strandVal = $('#strand').val();
+          const strandValid = (strandVal !== '');
+          setValidation($('#strand'), strandValid);
+          if (!strandValid) {
+            $('#strandFeedback').show();
+            isValid = false;
+          } else {
+            $('#strandFeedback').hide();
+          }
+        }
+
+        const agreeChecked = $('#agree').prop('checked');
+        if (!agreeChecked) {
+          $('#agree').addClass('is-invalid');
+          $('#agreeFeedback').show();
+          isValid = false;
+        } else {
+          $('#agree').removeClass('is-invalid');
+          $('#agreeFeedback').hide();
+        }
+
+        if (isValid) {
+          const data = {
+            firstName: $('#firstName').val().trim(),
+            lastName: $('#lastName').val().trim(),
+            birthdate: $('#birthdate').val(),
+            gender: $('input[name="gender"]:checked').val(),
+            address: $('#address').val().trim(),
+            gradeLevel: $('#gradeLevel').val(),
+            lrn: $('#lrn').val().trim() || 'N/A',
+            strand: (grade === '11' || grade === '12') ? $('#strand').val() : 'N/A',
+            guardianName: $('#guardianName').val().trim(),
+            guardianContact: $('#guardianContact').val().trim(),
+            relationship: $('#relationship').val(),
+            guardianEmail: $('#guardianEmail').val().trim() || 'N/A'
+          };
+
+          let resultHtml = `
+                        <div class="row">
+                            <div class="col-md-6"><strong>First Name:</strong> ${data.firstName}</div>
+                            <div class="col-md-6"><strong>Last Name:</strong> ${data.lastName}</div>
+                            <div class="col-md-6"><strong>Date of Birth:</strong> ${data.birthdate}</div>
+                            <div class="col-md-6"><strong>Gender:</strong> ${data.gender}</div>
+                            <div class="col-12"><strong>Address:</strong> ${data.address}</div>
+                            <div class="col-md-6"><strong>Grade Level:</strong> ${data.gradeLevel}</div>
+                            <div class="col-md-6"><strong>LRN:</strong> ${data.lrn}</div>`;
+
+          if (grade === '11' || grade === '12') {
+            resultHtml += `<div class="col-12"><strong>Strand:</strong> ${data.strand}</div>`;
+          }
+
+          resultHtml += `
+                            <div class="col-md-6"><strong>Guardian Name:</strong> ${data.guardianName}</div>
+                            <div class="col-md-6"><strong>Guardian Contact:</strong> ${data.guardianContact}</div>
+                            <div class="col-md-6"><strong>Relationship:</strong> ${data.relationship}</div>
+                            <div class="col-md-6"><strong>Guardian Email:</strong> ${data.guardianEmail}</div>
+                        </div>
+                    `;
+
+          $('#successAlert').removeClass('d-none');
+          $('#resultContent').html(resultHtml);
+          $('#resultCard').removeClass('d-none');
+          $('#submitBtn').prop('disabled', true).text('Submitted');
+
+          $('html, body').animate({
+            scrollTop: $('#resultCard').offset().top - 20
+          }, 400);
+        } else {
+          const $firstError = $('.is-invalid:first');
+          if ($firstError.length) {
+            $('html, body').animate({
+              scrollTop: $firstError.offset().top - 100
+            }, 300);
+            $firstError.focus();
+          }
+        }
+      });
+
+      $('#studentForm').on('reset', function () {
+        $(this).find('.is-valid, .is-invalid').removeClass('is-valid is-invalid');
+        $('.invalid-feedback').hide();
+        $('#genderFeedback').hide();
+        $('#agreeFeedback').hide();
+        $('#strandFeedback').hide();
+        $('#successAlert').addClass('d-none');
+        $('#resultCard').addClass('d-none');
+        $('#submitBtn').prop('disabled', false).text('Register Student');
+        $('#lrn').next('.invalid-feedback').remove();
+        $('#agree').removeClass('is-invalid');
+        $('#strand').removeClass('is-invalid is-valid');
+        $('#strandSection').hide();
+        $('#strand').prop('required', false);
+      });
+
+      $('#resetAfterResult').on('click', function () {
+        $('#studentForm')[0].reset();
+        $('#resultCard').addClass('d-none');
+        $('#successAlert').addClass('d-none');
+        $('#submitBtn').prop('disabled', false).text('Register Student');
+        $('#strandSection').hide();
+        $('#strand').prop('required', false);
+        $('#strand').removeClass('is-invalid is-valid');
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>
